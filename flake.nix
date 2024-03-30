@@ -13,7 +13,7 @@
         pkgs = import nixpkgs { inherit system; };
 
         inputs = with pkgs;
-          [ gleam glibcLocales ]
+          [ gleam glibcLocales rebar3]
           ++ optional stdenv.isLinux [ inotify-tools ]
           ++ optional stdenv.isDarwin terminal-notifier
           ++ optionals stdenv.isDarwin
