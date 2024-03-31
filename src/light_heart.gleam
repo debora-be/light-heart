@@ -1,9 +1,17 @@
-import gleam/io
+import gleam/erlang/process
+import mist
+import wisp
+import light_heart/router
 
 pub fn main() {
-  io.println("Hello from light_heart!")
-}
+  wisp.configure_logger()
+  let secret_key_base = wisp.random_string(64)
 
-pub fn hello_world() -> String {
-  "Hello, world!"
+  let assert Ok(_) =
+    wisp.mist_handler(router.handle_request, secret_key_base)
+    |> mist.new
+    |> mist.port(8000)
+    |> mist.start_http
+
+  process.sleep_forever()
 }
