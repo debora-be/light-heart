@@ -19,7 +19,7 @@ pub fn get_home_page_test() {
 
   response
   |> testing.string_body
-  |> should.equal("Hello, Joe!")
+  |> should.equal("Hello, if you are here, wwe'll sure having a great day!")
 }
 
 pub fn post_home_page_test() {
